@@ -1,8 +1,10 @@
+import store from '../js/Store';
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      searchKeyword: ''
+      searchKeyword: '',
+      searchResult: []
     };
   }
   handleSubmit(e) {
@@ -12,6 +14,7 @@ class App extends React.Component {
 
   handleChangeInput(e) {
     const searchKeyword = e.target.value;
+    this.search(this.state.searchKeyword);
 
     if (searchKeyword.length <= 0) {
       return this.handleReset();
@@ -20,6 +23,13 @@ class App extends React.Component {
     this.setState({
       searchKeyword
     });
+  }
+
+  search(searchKeyword) {
+    const searchResult = store.search(searchKeyword);
+    this.setState({
+      searchResult
+    })
   }
 
   handleReset() {
@@ -42,7 +52,7 @@ class App extends React.Component {
         </header>
         <div className='container'>
           <form
-            onSubmit={(e) => this.handleSubmit(e)}
+            onSubmit={e => this.handleSubmit(e)}
             onReset={() => this.handleReset()}
           >
             <input
@@ -50,12 +60,26 @@ class App extends React.Component {
               placeholder='검색어를 입력하세요'
               autoFocus
               value={this.state.searchKeyword}
-              onChange={(e) => this.handleChangeInput(e)}
+              onChange={e => this.handleChangeInput(e)}
             />
             {this.state.searchKeyword.length > 0 && (
               <button type='reset' className='btn-reset' />
             )}
           </form>
+          <div className='content'>
+            {this.state.searchResult.length > 0 ? (
+              <ul>
+                {this.state.searchResult.map(item => {
+                  return <li>
+                    <img src={item.imageurl] />
+                    <p>{item.name}</p>
+                  </li>;
+                })}
+              </ul>
+            ) : (
+              <div className='empty-box'>검색 결과가 없습니다.</div>
+            )}
+          </div>
         </div>
       </>
     );

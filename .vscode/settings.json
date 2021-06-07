@@ -1,0 +1,27 @@
+{
+  "[scss]": {
+    "editor.formatOnSave": false,
+  },
+  "[typescriptreact]": {
+    "editor.formatOnSave": false,
+    "editor.defaultFormatter": "vscode.typescript-language-features",
+  },
+  "[javascript]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    
+  },
+  "[mdx]": {
+    "editor.formatOnSave": true,
+    // "editor.defaultFormatter": "vscode.typescript-language-features",
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+  "editor.tabSize": 2,
+  "prettier.useEditorConfig": false,
+  "prettier.singleQuote": true,
+  "prettier.tabWidth": 2,
+  "prettier.trailingComma": "none",
+  "prettier.jsxSingleQuote": true,
+  "prettier.arrowParens": "avoid"
+  // "prettier.bracketSpacing": false
+}
